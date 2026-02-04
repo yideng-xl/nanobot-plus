@@ -53,6 +53,8 @@ class LiteLLMProvider(LLMProvider):
                 os.environ.setdefault("ZHIPUAI_API_KEY", api_key)
             elif "groq" in default_model:
                 os.environ.setdefault("GROQ_API_KEY", api_key)
+            elif "nvidia" in default_model:
+                os.environ.setdefault("NVIDIA_API_KEY", api_key)
         
         if api_base:
             litellm.api_base = api_base
