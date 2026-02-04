@@ -200,6 +200,7 @@ def gateway(
         bus=bus,
         provider=provider,
         workspace=config.workspace_path,
+        config=config,
         model=config.agents.defaults.model,
         max_iterations=config.agents.defaults.max_tool_iterations,
         brave_api_key=config.tools.web.search.api_key or None
@@ -309,6 +310,7 @@ def agent(
         bus=bus,
         provider=provider,
         workspace=config.workspace_path,
+        config=config,
         brave_api_key=config.tools.web.search.api_key or None
     )
     
