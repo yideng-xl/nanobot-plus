@@ -36,6 +36,7 @@ Features added in nanobot-plus beyond the original:
 | 🪶 **Feishu/Lark Channel** | ✅ Ready | Native long-connection support for Feishu (飞书) |
 | 🔒 **Allowlist Security** | ✅ Ready | Restrict bot access to specific users |
 | 🤖 **Gemini Integration** | ✅ Ready | Pre-configured for Google Gemini models |
+| 🏎️ **NVIDIA NIM Support** | ✅ Ready | Integrated support for NVIDIA Inference Microservices |
 
 ---
 
