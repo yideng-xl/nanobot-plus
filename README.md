@@ -1,92 +1,60 @@
 <div align="center">
-  <img src="nanobot_logo.png" alt="nanobot" width="500">
-  <h1>nanobot: Ultra-Lightweight Personal AI Assistant</h1>
+  <h1>🚀 nanobot-plus</h1>
+  <p><strong>Enhanced fork of <a href="https://github.com/HKUDS/nanobot">HKUDS/nanobot</a> with extended platform support</strong></p>
   <p>
-    <a href="https://pypi.org/project/nanobot-ai/"><img src="https://img.shields.io/pypi/v/nanobot-ai" alt="PyPI"></a>
-    <a href="https://pepy.tech/project/nanobot-ai"><img src="https://static.pepy.tech/badge/nanobot-ai" alt="Downloads"></a>
     <img src="https://img.shields.io/badge/python-≥3.11-blue" alt="Python">
     <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
-    <a href="./COMMUNICATION.md"><img src="https://img.shields.io/badge/Feishu-Group-E9DBFC?style=flat&logo=feishu&logoColor=white" alt="Feishu"></a>
-    <a href="./COMMUNICATION.md"><img src="https://img.shields.io/badge/WeChat-Group-C5EAB4?style=flat&logo=wechat&logoColor=white" alt="WeChat"></a>
-    <a href="https://discord.gg/MnCvHqpUGB"><img src="https://img.shields.io/badge/Discord-Community-5865F2?style=flat&logo=discord&logoColor=white" alt="Discord"></a>
+    <img src="https://img.shields.io/badge/upstream-HKUDS%2Fnanobot-orange" alt="Upstream">
   </p>
 </div>
 
-🐈 **nanobot** is an **ultra-lightweight** personal AI assistant inspired by [Clawdbot](https://github.com/openclaw/openclaw) 
+## 🎯 What is nanobot-plus?
 
-⚡️ Delivers core agent functionality in just **~4,000** lines of code — **99% smaller** than Clawdbot's 430k+ lines.
+**nanobot-plus** is a community-maintained fork of the excellent [nanobot](https://github.com/HKUDS/nanobot) project from Hong Kong University's Data Intelligence Lab (HKUDS).
 
-## 📢 News
+We extend the original ultra-lightweight AI assistant (~4,000 lines of code) with **additional platform integrations** and **enhanced features** while staying synchronized with upstream updates.
 
-- **2026-02-01** 🎉 nanobot launched! Welcome to try 🐈 nanobot!
+### Relationship with HKUDS/nanobot
 
-## Key Features of nanobot:
+| Aspect | HKUDS/nanobot | nanobot-plus |
+|--------|---------------|--------------|
+| **Maintainer** | HKU Data Intelligence Lab | Community (yideng-xl) |
+| **Focus** | Core functionality, research | Extended integrations |
+| **Channels** | Telegram, WhatsApp | Telegram, WhatsApp, **Feishu/Lark** |
+| **Updates** | Official releases | Synced with upstream + enhancements |
 
-🪶 **Ultra-Lightweight**: Just ~4,000 lines of code — 99% smaller than Clawdbot - core functionality.
+We regularly pull from upstream to ensure you get the latest official improvements plus our additional features.
 
-🔬 **Research-Ready**: Clean, readable code that's easy to understand, modify, and extend for research.
+---
 
-⚡️ **Lightning Fast**: Minimal footprint means faster startup, lower resource usage, and quicker iterations.
+## ✨ Plus Features
 
-💎 **Easy-to-Use**: One-click to depoly and you're ready to go.
+Features added in nanobot-plus beyond the original:
 
-## 🏗️ Architecture
+| Feature | Status | Description |
+|---------|--------|-------------|
+| 🪶 **Feishu/Lark Channel** | ✅ Ready | Native long-connection support for Feishu (飞书) |
+| 🔒 **Allowlist Security** | ✅ Ready | Restrict bot access to specific users |
+| 🤖 **Gemini Integration** | ✅ Ready | Pre-configured for Google Gemini models |
 
-<p align="center">
-  <img src="nanobot_arch.png" alt="nanobot architecture" width="800">
-</p>
-
-## ✨ Features
-
-<table align="center">
-  <tr align="center">
-    <th><p align="center">📈 24/7 Real-Time Market Analysis</p></th>
-    <th><p align="center">🚀 Full-Stack Software Engineer</p></th>
-    <th><p align="center">📅 Smart Daily Routine Manager</p></th>
-    <th><p align="center">📚 Personal Knowledge Assistant</p></th>
-  </tr>
-  <tr>
-    <td align="center"><p align="center"><img src="case/search.gif" width="180" height="400"></p></td>
-    <td align="center"><p align="center"><img src="case/code.gif" width="180" height="400"></p></td>
-    <td align="center"><p align="center"><img src="case/scedule.gif" width="180" height="400"></p></td>
-    <td align="center"><p align="center"><img src="case/memory.gif" width="180" height="400"></p></td>
-  </tr>
-  <tr>
-    <td align="center">Discovery • Insights • Trends</td>
-    <td align="center">Develop • Deploy • Scale</td>
-    <td align="center">Schedule • Automate • Organize</td>
-    <td align="center">Learn • Memory • Reasoning</td>
-  </tr>
-</table>
+---
 
 ## 📦 Install
 
-**Install from source** (latest features, recommended for development)
-
 ```bash
-git clone https://github.com/HKUDS/nanobot.git
-cd nanobot
+git clone https://github.com/yideng-xl/nanobot-plus.git
+cd nanobot-plus
 pip install -e .
 ```
 
-**Install with [uv](https://github.com/astral-sh/uv)** (stable, fast)
+Or with [uv](https://github.com/astral-sh/uv):
 
 ```bash
-uv tool install nanobot-ai
-```
-
-**Install from PyPI** (stable)
-
-```bash
-pip install nanobot-ai
+uv venv && source .venv/bin/activate
+uv pip install -e .
 ```
 
 ## 🚀 Quick Start
-
-> [!TIP]
-> Set your API key in `~/.nanobot/config.json`.
-> Get API keys: [OpenRouter](https://openrouter.ai/keys) (LLM) · [Brave Search](https://brave.com/search/api/) (optional, for web search)
-> You can also change the model to `minimax/minimax-m2` for lower cost.
 
 **1. Initialize**
 
@@ -99,53 +67,13 @@ nanobot onboard
 ```json
 {
   "providers": {
-    "openrouter": {
-      "apiKey": "sk-or-v1-xxx"
+    "gemini": {
+      "apiKey": "YOUR_GEMINI_API_KEY"
     }
   },
   "agents": {
     "defaults": {
-      "model": "anthropic/claude-opus-4-5"
-    }
-  },
-  "webSearch": {
-    "apiKey": "BSA-xxx"
-  }
-}
-```
-
-
-**3. Chat**
-
-```bash
-nanobot agent -m "What is 2+2?"
-```
-
-That's it! You have a working AI assistant in 2 minutes.
-
-## 🖥️ Local Models (vLLM)
-
-Run nanobot with your own local models using vLLM or any OpenAI-compatible server.
-
-**1. Start your vLLM server**
-
-```bash
-vllm serve meta-llama/Llama-3.1-8B-Instruct --port 8000
-```
-
-**2. Configure** (`~/.nanobot/config.json`)
-
-```json
-{
-  "providers": {
-    "vllm": {
-      "apiKey": "dummy",
-      "apiBase": "http://localhost:8000/v1"
-    }
-  },
-  "agents": {
-    "defaults": {
-      "model": "meta-llama/Llama-3.1-8B-Instruct"
+      "model": "gemini/gemini-2.0-flash"
     }
   }
 }
@@ -154,23 +82,23 @@ vllm serve meta-llama/Llama-3.1-8B-Instruct --port 8000
 **3. Chat**
 
 ```bash
-nanobot agent -m "Hello from my local LLM!"
+nanobot agent -m "你好！"
 ```
 
-> [!TIP]
-> The `apiKey` can be any non-empty string for local servers that don't require authentication.
+---
 
 ## 💬 Chat Apps
 
-Talk to your nanobot through Telegram or WhatsApp — anytime, anywhere.
+Talk to your nanobot through multiple platforms.
 
-| Channel | Setup |
-|---------|-------|
-| **Telegram** | Easy (just a token) |
-| **WhatsApp** | Medium (scan QR) |
+| Channel | Setup | Status |
+|---------|-------|--------|
+| **Telegram** | Easy (just a token) | ✅ Original |
+| **WhatsApp** | Medium (scan QR) | ✅ Original |
+| **Feishu/Lark** | Easy (App ID + Secret) | ✅ **Plus Feature** |
 
 <details>
-<summary><b>Telegram</b> (Recommended)</summary>
+<summary><b>Telegram</b></summary>
 
 **1. Create a bot**
 - Open Telegram, search `@BotFather`
@@ -191,8 +119,6 @@ Talk to your nanobot through Telegram or WhatsApp — anytime, anywhere.
 }
 ```
 
-> Get your user ID from `@userinfobot` on Telegram.
-
 **3. Run**
 
 ```bash
@@ -210,7 +136,6 @@ Requires **Node.js ≥18**.
 
 ```bash
 nanobot channels login
-# Scan QR with WhatsApp → Settings → Linked Devices
 ```
 
 **2. Configure**
@@ -226,17 +151,50 @@ nanobot channels login
 }
 ```
 
-**3. Run** (two terminals)
+**3. Run**
 
 ```bash
-# Terminal 1
-nanobot channels login
-
-# Terminal 2
 nanobot gateway
 ```
 
 </details>
+
+<details>
+<summary><b>Feishu/Lark (飞书)</b> ⭐ Plus Feature</summary>
+
+Works behind NAT/firewalls — no public IP required!
+
+**1. Create a Feishu App**
+- Go to [Feishu Open Platform](https://open.feishu.cn)
+- Create a self-built app
+- Enable bot capability
+- Add event subscription: `im.message.receive_v1`
+- Set connection mode to **Long Connection (长连接)**
+
+**2. Configure**
+
+```json
+{
+  "channels": {
+    "feishu": {
+      "enabled": true,
+      "app_id": "cli_xxxxx",
+      "app_secret": "your_app_secret",
+      "allow_from": ["ou_xxxxx"]
+    }
+  }
+}
+```
+
+**3. Run**
+
+```bash
+nanobot gateway
+```
+
+</details>
+
+---
 
 ## ⚙️ Configuration
 
@@ -244,17 +202,13 @@ Config file: `~/.nanobot/config.json`
 
 ### Providers
 
-> [!NOTE]
-> Groq provides free voice transcription via Whisper. If configured, Telegram voice messages will be automatically transcribed.
-
 | Provider | Purpose | Get API Key |
 |----------|---------|-------------|
-| `openrouter` | LLM (recommended, access to all models) | [openrouter.ai](https://openrouter.ai) |
+| `openrouter` | LLM (access to all models) | [openrouter.ai](https://openrouter.ai) |
 | `anthropic` | LLM (Claude direct) | [console.anthropic.com](https://console.anthropic.com) |
 | `openai` | LLM (GPT direct) | [platform.openai.com](https://platform.openai.com) |
-| `groq` | LLM + **Voice transcription** (Whisper) | [console.groq.com](https://console.groq.com) |
 | `gemini` | LLM (Gemini direct) | [aistudio.google.com](https://aistudio.google.com) |
-
+| `groq` | LLM + Voice transcription | [console.groq.com](https://console.groq.com) |
 
 <details>
 <summary><b>Full config example</b></summary>
@@ -263,32 +217,26 @@ Config file: `~/.nanobot/config.json`
 {
   "agents": {
     "defaults": {
-      "model": "anthropic/claude-opus-4-5"
+      "model": "gemini/gemini-2.0-flash"
     }
   },
   "providers": {
-    "openrouter": {
-      "apiKey": "sk-or-v1-xxx"
-    },
-    "groq": {
-      "apiKey": "gsk_xxx"
+    "gemini": {
+      "apiKey": "AIza..."
     }
   },
   "channels": {
-    "telegram": {
+    "feishu": {
       "enabled": true,
-      "token": "123456:ABC...",
-      "allowFrom": ["123456789"]
+      "app_id": "cli_xxxxx",
+      "app_secret": "secret",
+      "allow_from": ["ou_xxxxx"]
+    },
+    "telegram": {
+      "enabled": false
     },
     "whatsapp": {
       "enabled": false
-    }
-  },
-  "tools": {
-    "web": {
-      "search": {
-        "apiKey": "BSA..."
-      }
     }
   }
 }
@@ -296,120 +244,56 @@ Config file: `~/.nanobot/config.json`
 
 </details>
 
-## CLI Reference
-
-| Command | Description |
-|---------|-------------|
-| `nanobot onboard` | Initialize config & workspace |
-| `nanobot agent -m "..."` | Chat with the agent |
-| `nanobot agent` | Interactive chat mode |
-| `nanobot gateway` | Start the gateway |
-| `nanobot status` | Show status |
-| `nanobot channels login` | Link WhatsApp (scan QR) |
-| `nanobot channels status` | Show channel status |
-
-<details>
-<summary><b>Scheduled Tasks (Cron)</b></summary>
-
-```bash
-# Add a job
-nanobot cron add --name "daily" --message "Good morning!" --cron "0 9 * * *"
-nanobot cron add --name "hourly" --message "Check status" --every 3600
-
-# List jobs
-nanobot cron list
-
-# Remove a job
-nanobot cron remove <job_id>
-```
-
-</details>
-
-## 🐳 Docker
-
-> [!TIP]
-> The `-v ~/.nanobot:/root/.nanobot` flag mounts your local config directory into the container, so your config and workspace persist across container restarts.
-
-Build and run nanobot in a container:
-
-```bash
-# Build the image
-docker build -t nanobot .
-
-# Initialize config (first time only)
-docker run -v ~/.nanobot:/root/.nanobot --rm nanobot onboard
-
-# Edit config on host to add API keys
-vim ~/.nanobot/config.json
-
-# Run gateway (connects to Telegram/WhatsApp)
-docker run -v ~/.nanobot:/root/.nanobot -p 18790:18790 nanobot gateway
-
-# Or run a single command
-docker run -v ~/.nanobot:/root/.nanobot --rm nanobot agent -m "Hello!"
-docker run -v ~/.nanobot:/root/.nanobot --rm nanobot status
-```
+---
 
 ## 📁 Project Structure
 
 ```
 nanobot/
 ├── agent/          # 🧠 Core agent logic
-│   ├── loop.py     #    Agent loop (LLM ↔ tool execution)
-│   ├── context.py  #    Prompt builder
-│   ├── memory.py   #    Persistent memory
-│   ├── skills.py   #    Skills loader
-│   ├── subagent.py #    Background task execution
-│   └── tools/      #    Built-in tools (incl. spawn)
-├── skills/         # 🎯 Bundled skills (github, weather, tmux...)
-├── channels/       # 📱 WhatsApp integration
+├── channels/       # 📱 Platform integrations (Telegram, WhatsApp, Feishu)
+├── providers/      # 🤖 LLM providers
+├── skills/         # 🎯 Bundled skills
 ├── bus/            # 🚌 Message routing
 ├── cron/           # ⏰ Scheduled tasks
-├── heartbeat/      # 💓 Proactive wake-up
-├── providers/      # 🤖 LLM providers (OpenRouter, etc.)
 ├── session/        # 💬 Conversation sessions
-├── config/         # ⚙️ Configuration
 └── cli/            # 🖥️ Commands
 ```
 
-## 🤝 Contribute & Roadmap
+---
 
-PRs welcome! The codebase is intentionally small and readable. 🤗
+## 🤝 Contributing
 
-**Roadmap** — Pick an item and [open a PR](https://github.com/HKUDS/nanobot/pulls)!
+PRs welcome! We're especially interested in:
 
-- [x] **Voice Transcription** — Support for Groq Whisper (Issue #13)
-- [ ] **Multi-modal** — See and hear (images, voice, video)
-- [ ] **Long-term memory** — Never forget important context
-- [ ] **Better reasoning** — Multi-step planning and reflection
-- [ ] **More integrations** — Discord, Slack, email, calendar
-- [ ] **Self-improvement** — Learn from feedback and mistakes
+- [ ] **More channels** — Discord, Slack, DingTalk, WeChat Work
+- [ ] **Rich message support** — Feishu cards, interactive buttons
+- [ ] **Document tools** — Read/write Feishu Docs, Wiki, Bitable
+- [ ] **Voice support** — Speech-to-text for Feishu
 
-### Contributors
-
-<a href="https://github.com/HKUDS/nanobot/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=HKUDS/nanobot" />
-</a>
-
+---
 
 ## ⭐ Star History
 
 <div align="center">
-  <a href="https://star-history.com/#HKUDS/nanobot&Date">
+  <a href="https://star-history.com/#yideng-xl/nanobot-plus&Date">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=HKUDS/nanobot&type=Date&theme=dark" />
-      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=HKUDS/nanobot&type=Date" />
-      <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=HKUDS/nanobot&type=Date" style="border-radius: 15px; box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);" />
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=yideng-xl/nanobot-plus&type=Date&theme=dark" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=yideng-xl/nanobot-plus&type=Date" />
+      <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=yideng-xl/nanobot-plus&type=Date" />
     </picture>
   </a>
 </div>
 
-<p align="center">
-  <em> Thanks for visiting ✨ nanobot!</em><br><br>
-  <img src="https://visitor-badge.laobi.icu/badge?page_id=HKUDS.nanobot&style=for-the-badge&color=00d4ff" alt="Views">
-</p>
+---
 
+## 🙏 Acknowledgments
+
+- **[HKUDS/nanobot](https://github.com/HKUDS/nanobot)** — The brilliant original project from Hong Kong University
+- **[OpenClaw](https://github.com/openclaw/openclaw)** — Inspiration for the personal AI assistant concept
+
+---
 
 <p align="center">
-  <sub>nanobot is for educational, research, and technical exchange purposes only</sub>
+  <sub>nanobot-plus is for educational, research, and personal use.</sub>
 </p>
