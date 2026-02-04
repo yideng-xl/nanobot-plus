@@ -106,6 +106,10 @@ class LiteLLMProvider(LLMProvider):
         # For Gemini, ensure gemini/ prefix if not already present
         if "gemini" in model.lower() and not model.startswith("gemini/"):
             model = f"gemini/{model}"
+
+        # For NVIDIA, use nvidia_nim/ prefix
+        if model.startswith("nvidia/"):
+            model = model.replace("nvidia/", "nvidia_nim/", 1)
         
         kwargs: dict[str, Any] = {
             "model": model,
