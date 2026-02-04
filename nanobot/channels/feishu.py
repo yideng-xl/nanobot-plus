@@ -108,6 +108,23 @@ class FeishuChannel(BaseChannel):
         except Exception as e:
             logger.error(f"Error sending Feishu message: {e}")
             
+    async def _add_reaction(self, message_id: str, emoji_type: str) -> None:
+        """Add an emoji reaction to a message."""
+        try:
+            request: CreateMessageReactionRequest = CreateMessageReactionRequest.builder() \
+                .message_id(message_id) \
+                .request_body(CreateMessageReactionRequestBody.builder() \
+                    .reaction_type(Emoji.builder().emoji_type(emoji_type).build()) \
+                    .build()) \
+                .build()
+                
+            await self._loop.run_in_executor(
+                None,
+                lambda: self._client.im.v1.message_reaction.create(request)
+            )
+        except Exception as e:
+            logger.error(f"Error adding Feishu reaction: {e}")
+
     def _on_message(self, data: P2ImMessageReceiveV1) -> None:
         """Handle incoming message event."""
         logger.debug(f"Received Feishu event: {data}")
@@ -125,6 +142,12 @@ class FeishuChannel(BaseChannel):
         
         logger.debug(f"Feishu message from {sender_id}: {content[:50]}...")
         
+        # Immediate reaction to acknowledge receipt
+        if self._client:
+            self._loop.call_soon_threadsafe(
+                lambda: asyncio.create_task(self._add_reaction(message.message_id, "EYES"))
+            )
+
         # Forward to the bus (need to run in loop)
         if self._loop:
             asyncio.run_coroutine_threadsafe(
