@@ -111,6 +111,7 @@ class FeishuChannel(BaseChannel):
     async def _add_reaction(self, message_id: str, emoji_type: str) -> None:
         """Add an emoji reaction to a message."""
         try:
+            logger.debug(f"Adding reaction {emoji_type} to message {message_id}")
             request: CreateMessageReactionRequest = CreateMessageReactionRequest.builder() \
                 .message_id(message_id) \
                 .request_body(CreateMessageReactionRequestBody.builder() \
@@ -118,10 +119,12 @@ class FeishuChannel(BaseChannel):
                     .build()) \
                 .build()
                 
-            await self._loop.run_in_executor(
+            response = await self._loop.run_in_executor(
                 None,
                 lambda: self._client.im.v1.message_reaction.create(request)
             )
+            if not response.success():
+                logger.error(f"Failed to add reaction: {response.code} {response.msg}")
         except Exception as e:
             logger.error(f"Error adding Feishu reaction: {e}")
 
@@ -143,9 +146,10 @@ class FeishuChannel(BaseChannel):
         logger.debug(f"Feishu message from {sender_id}: {content[:50]}...")
         
         # Immediate reaction to acknowledge receipt
-        if self._client:
-            self._loop.call_soon_threadsafe(
-                lambda: asyncio.create_task(self._add_reaction(message.message_id, "EYES"))
+        if self._client and self._loop:
+            asyncio.run_coroutine_threadsafe(
+                self._add_reaction(message.message_id, "Eyes"),
+                self._loop
             )
 
         # Forward to the bus (need to run in loop)
